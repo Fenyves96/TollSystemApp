@@ -1,4 +1,4 @@
-package entity;
+package hu.fenyvesvolgyimate.tollsystem.entity;
 
 import java.util.Date;
 
@@ -65,5 +65,9 @@ public class Vignette {
 
     public void setValidTo(Date validTo) {
         this.validTo = validTo;
+    }
+    @Override
+    public String toString(){
+        return "asd";
     }
 }
