@@ -1,4 +1,4 @@
-package dao;
+package hu.fenyvesvolgyimate.tollsystem.dao;
 
 import hu.fenyvesvolgyimate.tollsystem.entity.Vignette;
 

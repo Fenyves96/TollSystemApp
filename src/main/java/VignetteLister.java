@@ -1,28 +1,27 @@
-import dao.VignetteStorage;
 import hu.fenyvesvolgyimate.tollsystem.VehicleRegisterClient;
 import hu.fenyvesvolgyimate.tollsystem.VignetteListerAPI;
+import hu.fenyvesvolgyimate.tollsystem.dao.VignetteStorage;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vehicle;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vignette;
 import hu.fenyvesvolgyimate.tollsystem.parser.VehicleJsonParser;
 import hu.fenyvesvolgyimate.tollsystem.parser.VignetteResponseParser;
-import hu.fenyvesvolgyimate.vehicleregisterapp.interactor.VehicleRegister;
-import hu.fenyvesvolgyimate.vehicleregisterapp.presenter.VehiclePresenter;
+import hu.fenyvesvolgyimate.tollsystem.presenter.VignettePresenter;
 import hu.fenyvesvolgyimate.tollsystem.validaton.VignetteValidator;
 
 import java.util.List;
 
-public class VignetteLister implements VignetteListerAPI, VehiclePresenter {
+public class VignetteLister implements VignetteListerAPI {
     VignetteValidator validator = new VignetteValidator();
     VehicleJsonParser parser = new VehicleJsonParser();
-    VignetteResponseParser vignetteResponseParser = new VignetteResponseParser();
-
     VehicleRegisterClient vehicleRegisterClient;
-
     VignetteStorage vignetteStorage;
+    VignetteResponseParser responseParser = new VignetteResponseParser();
+    VignettePresenter presenter;
 
-    public VignetteLister(VignetteStorage vignetteStorage, VehicleRegisterClient vehicleRegisterClient){
+    public VignetteLister(VignetteStorage vignetteStorage, VehicleRegisterClient vehicleRegisterClient, VignettePresenter presenter) {
         this.vignetteStorage = vignetteStorage;
         this.vehicleRegisterClient = vehicleRegisterClient;
+        this.presenter = presenter;
     }
 
     @Override
@@ -31,14 +30,7 @@ public class VignetteLister implements VignetteListerAPI, VehiclePresenter {
         String registrationNumber = parser.parseRegistrationNumberFromJson(registrationNumberJson);
         Vehicle vehicle = vehicleRegisterClient.getVehicleByRegistrationNumber(registrationNumber);
         List<Vignette> vignettes = vignetteStorage.findVignettesByRegistrationNumber(registrationNumber);
-
-    }
-
-    @Override
-    public void displayVehicle(String s) {
-    }
-
-    @Override
-    public void displayMessage(String s) {
+        String jsonResponse = responseParser.parseVehicleAndVignettesIntoJson(vehicle, vignettes);
+        presenter.displayVehicleVignettes(jsonResponse);
     }
 }

@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class VignetteResponseParserTest {
     VignetteResponseParser parser = new VignetteResponseParser();
+
     @Test
-    public void testParse(){
+    public void testParse() {
         Vehicle vehicle = new Vehicle();
         vehicle.setMake("make");
         vehicle.setMaxTransportablePassengers(5);
@@ -28,6 +29,10 @@ class VignetteResponseParserTest {
         vignette.setVehicleCategory("vehicleCategory");
         vignette.setPrice(123);
 
-        System.out.print(parser.parseVehicleAndVignettesIntoJson(vehicle, List.of(vignette)));
+        try {
+            parser.parseVehicleAndVignettesIntoJson(vehicle, List.of(vignette));
+        } catch (Exception ex) {
+            fail("Invalid json");
+        }
     }
 }
