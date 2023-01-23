@@ -3,22 +3,23 @@ package hu.fenyvesvolgyimate.tollsystem;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vehicle;
 import hu.fenyvesvolgyimate.tollsystem.parser.VehicleJsonParser;
 import hu.fenyvesvolgyimate.tollsystem.validaton.VehicleValidator;
+import hu.fenyvesvolgyimate.vehicleregisterapp.interactor.VehicleReader;
 import hu.fenyvesvolgyimate.vehicleregisterapp.interactor.VehicleRegister;
 import hu.fenyvesvolgyimate.vehicleregisterapp.presenter.VehiclePresenter;
 
 public class VehicleRegisterClient implements VehiclePresenter {
-    VehicleRegister vehicleRegister;
+    VehicleReader vehicleReader;
     VehicleValidator vehicleValidator = new VehicleValidator();
     VehicleJsonParser vehicleJsonParser = new VehicleJsonParser();
 
     Vehicle vehicleResult;
 
-    public VehicleRegisterClient(VehicleRegister vehicleRegister){
-        this.vehicleRegister = vehicleRegister;
+    public VehicleRegisterClient(VehicleRegister vehicleReader) {
+        this.vehicleReader = vehicleReader;
     }
 
-    public Vehicle getVehicleByRegistrationNumber(String registrationNumber){
-        vehicleRegister.getVehicleByRegisterNumber(registrationNumber);
+    public Vehicle getVehicleByRegistrationNumber(String registrationNumber) {
+        vehicleReader.getVehicleByRegisterNumber(registrationNumber);
         return vehicleResult;
     }
 
