@@ -16,14 +16,14 @@ public class VignetteResponseParser {
         try {
             vignettes.forEach(v -> vignettesJSONArray.put(generateJsonObjectFromVignette(v)));
             jsonObject.put("vignettes", vignettesJSONArray);
-            jsonObject.put("vehicle", generateJSonStringFromVehicle(vehicle));
+            jsonObject.put("vehicle", generateJSonObjectFromVehicle(vehicle));
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
         return jsonObject.toString();
     }
 
-    private String generateJSonStringFromVehicle(Vehicle vehicle) {
+    private JSONObject generateJSonObjectFromVehicle(Vehicle vehicle) {
         JSONObject vehicleJson = new JSONObject();
         try {
             vehicleJson.put("category", vehicle.getVehicleCategory());
@@ -33,7 +33,7 @@ public class VignetteResponseParser {
         } catch (JSONException jsonException) {
             throw new InvalidVehicleResponse();
         }
-        return vehicleJson.toString();
+        return vehicleJson;
     }
 
 
