@@ -73,9 +73,9 @@ public class JsonParser {
     public Date parseDateByKey(JSONObject jsonObject, String key) {
         String dateStringValue = null;
         try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             dateStringValue = jsonObject.getString(key);
-            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
-            return df.parse(dateStringValue);
+            return formatter.parse(dateStringValue);
         } catch (JSONException | ParseException e) {
             throw new RuntimeException(e);
         }
