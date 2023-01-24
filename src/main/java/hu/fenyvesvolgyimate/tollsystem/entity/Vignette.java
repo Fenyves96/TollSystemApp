@@ -11,6 +11,11 @@ public class Vignette {
     Date validFrom;
     Date validTo;
 
+    public boolean isValid(){
+        Date now = new Date();
+        return !now.after(validTo) && !now.before(validFrom);
+    }
+
     public String getRegistrationNumber() {
         return registrationNumber;
     }

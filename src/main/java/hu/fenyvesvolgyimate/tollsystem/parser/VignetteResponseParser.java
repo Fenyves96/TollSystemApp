@@ -45,6 +45,7 @@ public class VignetteResponseParser {
             jsonObject.put("validTo", vignette.getValidTo());
             jsonObject.put("vehicleCategory", vignette.getVehicleCategory());
             jsonObject.put("dateOfPurchase", vignette.getDateOfPurchase());
+            jsonObject.put("isValid", vignette.isValid());
         } catch (JSONException exception) {
             throw new RuntimeException();
         }
