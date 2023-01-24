@@ -2,7 +2,7 @@ package hu.fenyvesvolgyimate.tollsystem.entity;
 
 public class Vehicle {
     String registrationNumber;
-    String vehicleCategory;
+    String category;
     String make;
     int maxTransportablePassengers;
 
@@ -15,11 +15,11 @@ public class Vehicle {
     }
 
     public String getVehicleCategory() {
-        return vehicleCategory;
+        return category;
     }
 
-    public void setVehicleCategory(String vehicleCategory) {
-        this.vehicleCategory = vehicleCategory;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getMake() {

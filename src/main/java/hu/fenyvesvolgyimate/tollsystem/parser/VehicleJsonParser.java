@@ -18,7 +18,7 @@ public class VehicleJsonParser {
 
         vehicle.setRegistrationNumber(registrationNumber);
         vehicle.setMake(make);
-        vehicle.setVehicleCategory(vehicleCategory);
+        vehicle.setCategory(vehicleCategory);
         vehicle.setMaxTransportablePassengers(maxTransportablePassengers);
         return vehicle;
     }

@@ -18,7 +18,6 @@ class VignetteResponseParserTest {
         vehicle.setMake("make");
         vehicle.setMaxTransportablePassengers(5);
         vehicle.setRegistrationNumber("abc-123");
-        vehicle.setVehicleCategory("vehicleCategory");
 
         Vignette vignette = new Vignette();
         vignette.setType("type");
@@ -30,7 +29,7 @@ class VignetteResponseParserTest {
         vignette.setPrice(123);
 
         try {
-            parser.parseVehicleAndVignettesIntoJson(vehicle, List.of(vignette));
+            System.out.println(parser.parseVehicleAndVignettesIntoJson(vehicle, List.of(vignette)));
         } catch (Exception ex) {
             fail("Invalid json");
         }

@@ -26,7 +26,7 @@ public class VignetteResponseParser {
     private String generateJSonStringFromVehicle(Vehicle vehicle) {
         JSONObject vehicleJson = new JSONObject();
         try {
-            vehicleJson.put("vehicleCategory", vehicle.getVehicleCategory());
+            vehicleJson.put("category", vehicle.getVehicleCategory());
             vehicleJson.put("make", vehicle.getMake());
             vehicleJson.put("registrationNumber", vehicle.getRegistrationNumber());
             vehicleJson.put("maxTransportablePassengers", vehicle.getMaxTransportablePassengers());
@@ -40,6 +40,7 @@ public class VignetteResponseParser {
     JSONObject generateJsonObjectFromVignette(Vignette vignette) {
         JSONObject jsonObject = new JSONObject();
         try {
+            jsonObject.put("vehicleCategory", vignette.getVehicleCategory());
             jsonObject.put("validFrom", vignette.getValidFrom());
             jsonObject.put("validTo", vignette.getValidTo());
             jsonObject.put("vehicleCategory", vignette.getVehicleCategory());
