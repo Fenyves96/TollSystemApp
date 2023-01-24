@@ -1,4 +1,4 @@
-package hu.fenyvesvolgyimate.tollsystem;
+package hu.fenyvesvolgyimate.tollsystem.client;
 
 import hu.fenyvesvolgyimate.tollsystem.entity.Vehicle;
 import hu.fenyvesvolgyimate.tollsystem.parser.JsonParser;

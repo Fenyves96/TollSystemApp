@@ -1,7 +1,7 @@
 package hu.fenyvesvolgyimate.tollsystem;
-import hu.fenyvesvolgyimate.tollsystem.VehicleRegisterClient;
-import hu.fenyvesvolgyimate.tollsystem.VignetteListerAPI;
+import hu.fenyvesvolgyimate.tollsystem.client.VehicleRegisterClient;
 import hu.fenyvesvolgyimate.tollsystem.dao.VignetteStorage;
+import hu.fenyvesvolgyimate.tollsystem.dto.VignettesRequestDTO;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vehicle;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vignette;
 import hu.fenyvesvolgyimate.tollsystem.parser.VehicleJsonParser;
@@ -28,9 +28,9 @@ public class VignetteLister implements VignetteListerAPI {
     @Override
     public void listVignettesByRegistrationNumber(String registrationNumberJson) {
         validator.validateRegistrationNumberJsonString(registrationNumberJson);
-        String registrationNumber = parser.parseRegistrationNumberFromJson(registrationNumberJson);
-        Vehicle vehicle = vehicleRegisterClient.getVehicleByRegistrationNumber(registrationNumber);
-        List<Vignette> vignettes = vignetteStorage.findVignettesByRegistrationNumber(registrationNumber);
+        VignettesRequestDTO requestDTO = parser.parseRegistrationNumberFromJson(registrationNumberJson);
+        Vehicle vehicle = vehicleRegisterClient.getVehicleByRegistrationNumber(requestDTO.registrationNumber);
+        List<Vignette> vignettes = vignetteStorage.findVignettesByRegistrationNumber(requestDTO.registrationNumber);
         String jsonResponse = responseParser.parseVehicleAndVignettesIntoJson(vehicle, vignettes);
         presenter.displayVehicleVignettes(jsonResponse);
     }
