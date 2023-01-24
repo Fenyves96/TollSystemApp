@@ -4,7 +4,7 @@ import hu.fenyvesvolgyimate.tollsystem.dao.VignetteStorage;
 import hu.fenyvesvolgyimate.tollsystem.dto.VignettesRequestDTO;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vehicle;
 import hu.fenyvesvolgyimate.tollsystem.entity.Vignette;
-import hu.fenyvesvolgyimate.tollsystem.parser.VehicleJsonParser;
+import hu.fenyvesvolgyimate.tollsystem.parser.VignetteJsonParser;
 import hu.fenyvesvolgyimate.tollsystem.parser.VignetteResponseParser;
 import hu.fenyvesvolgyimate.tollsystem.presenter.VignettePresenter;
 import hu.fenyvesvolgyimate.tollsystem.validaton.VignetteValidator;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class VignetteLister implements VignetteListerAPI {
     VignetteValidator validator = new VignetteValidator();
-    VehicleJsonParser parser = new VehicleJsonParser();
+    VignetteJsonParser parser = new VignetteJsonParser();
     VehicleRegisterClient vehicleRegisterClient;
     VignetteStorage vignetteStorage;
     VignetteResponseParser responseParser = new VignetteResponseParser();
