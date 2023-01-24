@@ -66,8 +66,4 @@ public class Vignette {
     public void setValidTo(Date validTo) {
         this.validTo = validTo;
     }
-    @Override
-    public String toString(){
-        return "asd";
-    }
 }

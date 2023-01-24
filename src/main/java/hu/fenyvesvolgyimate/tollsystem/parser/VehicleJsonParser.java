@@ -13,7 +13,7 @@ public class VehicleJsonParser {
         Vehicle vehicle = new Vehicle();
         String registrationNumber = jsonParser.parseStringValueFromJsonStringByKey(vehicleJson, "registrationNumber");
         String make = jsonParser.parseStringValueFromJsonStringByKey(vehicleJson, "make");
-        String vehicleCategory = jsonParser.parseStringValueFromJsonStringByKey(vehicleJson, "vehicleType");
+        String vehicleCategory = jsonParser.parseStringValueFromJsonStringByKey(vehicleJson, "type");
         int maxTransportablePassengers  = jsonParser.parseIntValueFromJsonStringByKey(vehicleJson, "numberOfSeats");
 
         vehicle.setRegistrationNumber(registrationNumber);

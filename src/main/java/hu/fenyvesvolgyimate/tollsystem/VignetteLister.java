@@ -1,3 +1,4 @@
+package hu.fenyvesvolgyimate.tollsystem;
 import hu.fenyvesvolgyimate.tollsystem.VehicleRegisterClient;
 import hu.fenyvesvolgyimate.tollsystem.VignetteListerAPI;
 import hu.fenyvesvolgyimate.tollsystem.dao.VignetteStorage;

@@ -62,8 +62,12 @@ public class JsonParser {
     }
 
     public Integer parseIntValueFromJsonStringByKey(String jsonString, String key) {
-        String stringValue = parseStringValueFromJsonStringByKey(jsonString, key);
-        return Integer.valueOf(stringValue);
+        JSONObject jsonObject = tryParse(jsonString);
+        try {
+            return jsonObject.getInt(key);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Date parseDateByKey(JSONObject jsonObject, String key) {
